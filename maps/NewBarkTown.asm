@@ -296,7 +296,7 @@ NewBarkTown_MapEvents:
 
 	def_warp_events
 	warp_event  6,  3, ELMS_LAB, 1
-	warp_event 13,  5, PLAYERS_HOUSE_1F, 1
+	warp_event  5,  4, PLAYERS_HOUSE_1F, 1
 	warp_event  3, 11, PLAYERS_NEIGHBORS_HOUSE, 1
 	warp_event 11, 13, ELMS_HOUSE, 1
 
@@ -306,7 +306,7 @@ NewBarkTown_MapEvents:
 
 	def_bg_events
 	bg_event  8,  8, BGEVENT_READ, NewBarkTownSign
-	bg_event 11,  5, BGEVENT_READ, NewBarkTownPlayersHouseSign
+	bg_event  8,  4, BGEVENT_READ, NewBarkTownPlayersHouseSign
 	bg_event  3,  3, BGEVENT_READ, NewBarkTownElmsLabSign
 	bg_event  9, 13, BGEVENT_READ, NewBarkTownElmsHouseSign
 
