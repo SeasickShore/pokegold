@@ -2494,7 +2494,7 @@ wAzaleaTownSceneID::                              db
 wGoldenrodGymSceneID::                            db
 wGoldenrodMagnetTrainStationSceneID::             db
 wOlivineCitySceneID::                             db
-wRoute34SceneID::                                 db
+wPlayersHouse2FSceneID::                          db
 wEcruteakTinTowerEntranceSceneID::                db
 wEcruteakPokecenter1FSceneID::                    db
 wMahoganyTownSceneID::                            db

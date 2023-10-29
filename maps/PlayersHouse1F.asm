@@ -10,7 +10,20 @@ PlayersHouse1F_MapScripts:
 	scene_script PlayersHouse1FNoopScene,    SCENE_PLAYERSHOUSE1F_NOOP
 
 	def_callbacks
-
+	callback MAPCALLBACK_NEWMAP, PlayersHouse1FResetMusic
+	
+PlayersHouse1FResetMusic:
+	checkevent EVENT_MUSIC_FADEOUT
+	iftrue .SkipCallback
+	checkevent EVENT_LISTENED_TO_INITIAL_RADIO
+	iftrue .fademusic
+	sjump .SkipCallback
+.fademusic
+	setevent EVENT_MUSIC_FADEOUT
+	musicfadeout MUSIC_NEW_BARK_TOWN, 16
+.SkipCallback	
+	endcallback
+	
 PlayersHouse1FMeetMomScene:
 	sdefer MeetMomScript
 	end
