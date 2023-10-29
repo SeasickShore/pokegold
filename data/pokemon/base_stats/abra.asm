@@ -1,6 +1,6 @@
 	db ABRA ; 063
 
-	db  25,  20,  15,  90, 105,  55
+	db  25,  20,  15,  90, 105,  65
 	;   hp  atk  def  spd  sat  sdf
 
 	db PSYCHIC_TYPE, PSYCHIC_TYPE ; type

@@ -1,6 +1,6 @@
 	db KADABRA ; 064
 
-	db  40,  35,  30, 105, 120,  70
+	db  40,  35,  30, 105, 120,  75
 	;   hp  atk  def  spd  sat  sdf
 
 	db PSYCHIC_TYPE, PSYCHIC_TYPE ; type

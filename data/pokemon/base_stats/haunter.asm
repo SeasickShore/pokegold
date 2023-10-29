@@ -1,6 +1,6 @@
 	db HAUNTER ; 093
 
-	db  45,  50,  45,  95, 115,  55
+	db  45,  50,  45,  95, 115,  40
 	;   hp  atk  def  spd  sat  sdf
 
 	db GHOST, POISON ; type
