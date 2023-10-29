@@ -93,6 +93,18 @@ ELIF DEF(_SILVER)
 	db "GOLD@"
 ENDC
 
+NameMom:
+	ld b, NAME_MOM
+	ld de, wMomsName
+	farcall _NamingScreen
+	ld hl, wMomsName
+	ld de, .DefaultName
+	call InitName
+	ret
+
+.DefaultName:
+	db "MOM@"
+
 NameRater:
 	farcall _NameRater
 	ret
