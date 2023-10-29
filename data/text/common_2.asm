@@ -1155,7 +1155,10 @@ _OakText1::
 	prompt
 
 _OakText2::
-	text "This world is in-"
+	text "As you surely"
+	line "already know…"
+	
+	para "This world is in-"
 	line "habited by crea-"
 	cont "tures that we call"
 	cont "#MON.@"
@@ -1166,55 +1169,62 @@ _OakText3::
 	text_end
 
 _OakText4::
-	text "People and #MON"
-	line "live together by"
+	text "For some people,"
+	line "#MON are"
+	cont "pets. Others use"
+	cont "them for fights."
 
-	para "supporting each"
-	line "other."
+	para "Myself…"
 
-	para "Some people play"
-	line "with #MON, some"
-	cont "battle with them."
+	para "I study #MON"
+	line "as a profession."
 	prompt
 
 _OakText5::
-	text "But we don't know"
-	line "everything about"
-	cont "#MON yet."
-
-	para "There are still"
-	line "many mysteries to"
-	cont "solve."
-
-	para "That's why I study"
-	line "#MON every day."
+	text "First, what is"
+	line "your name?"
 	prompt
 
 _OakText6::
-	text "Now, what did you"
-	line "say your name was?"
+	text "Right! So your"
+	line "name is <PLAYER>!"
+	prompt
+	
+_OakText7::
+	text "Then there's this"
+	line "boy. He's been"
+	cont "your rival since"
+	cont "you were a baby."
+	cont "…Erm, what is"
+	cont "his name again?"
 	prompt
 
-_OakText7::
-	text "<PLAYER>, are you"
-	line "ready?"
+_OakText8::
+	text "Oh, that's right!"
+	line "His name is"
+	cont "<RIVAL>!"
+	prompt
+
+_OakText9::
+	text "Now, let's mark"
+	line "the start of your"
+	cont "journey by setting"
+	cont "the day!"
+	
+	para "Be precise!"
+	prompt
+
+_OakText10::
+	text "<PLAYER>!"
 
 	para "Your very own"
-	line "#MON story is"
-	cont "about to unfold."
-
-	para "You'll face fun"
-	line "times and tough"
-	cont "challenges."
+	line "#MON legend is"
+	cont "about to unfold!"
 
 	para "A world of dreams"
 	line "and adventures"
-
-	para "with #MON"
-	line "awaits! Let's go!"
-
-	para "I'll be seeing you"
-	line "later!"
+	cont "with #MON"
+	cont "awaits! Let's go!"
 	done
 
 _ClockTimeMayBeWrongText::

@@ -18,6 +18,7 @@ PlayersHouse2FInitializeRoomCallback:
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_8
 	checkevent EVENT_INITIALIZED_EVENTS
 	iftrue .SkipInitialization
+	setflag ENGINE_POKEGEAR
 	jumpstd InitializeEventsScript
 	endcallback
 
@@ -319,5 +320,5 @@ PlayersHouse2F_MapEvents:
 	bg_event  7,  2, BGEVENT_READ, PlayersHouseConsoleScript
 	
 	def_object_events
-	object_event  8,  1, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PlayersHouse2F_KenScript, -1	
+	object_event  8,  1, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PlayersHouse2F_KenScript, EVENT_GOT_A_POKEMON_FROM_ELM	
 	object_event  6,  1, SPRITE_FAIRY, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PlayersHouseDollScript, -1	

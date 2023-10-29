@@ -211,9 +211,13 @@ InitializeNPCNames:
 	call CopyBytes
 	ret
 
-.Rival:  db "???@"
+IF DEF(_GOLD)
+.Rival:  db "SILVER@"
+ELIF DEF(_SILVER)
+.Rival:  db "GOLD@"
+ENDC
 .Red:    db "RED@"
-.Green:  db "GREEN@"
+.Green:  db "BLUE@"
 .Mom:    db "MOM@"
 
 InitializeWorld:
@@ -496,14 +500,11 @@ Continue_DisplayGameTime:
 	jp PrintNum
 
 OakSpeech:
-	farcall InitClock
-	call RotateFourPalettesLeft
 	call ClearTilemap
 
-	ld de, MUSIC_ROUTE_30
+	ld de, MUSIC_ROUTE_2
 	call PlayMusic
 
-	call RotateFourPalettesRight
 	call RotateThreePalettesRight
 	xor a
 	ld [wCurPartySpecies], a
@@ -520,13 +521,12 @@ OakSpeech:
 	call RotateThreePalettesRight
 	call ClearTilemap
 
-	ld a, MARILL
+	ld a, SLOWKING
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
 	call GetBaseData
 
 	hlcoord 6, 4
-	hlcoord 6, 4 ; redundant
 	call PrepMonFrontpic
 
 	xor a
@@ -546,7 +546,7 @@ OakSpeech:
 
 	xor a
 	ld [wCurPartySpecies], a
-	ld a, POKEMON_PROF
+	ld a, CAL
 	ld [wTrainerClass], a
 	call Intro_PrepTrainerPic
 
@@ -556,6 +556,42 @@ OakSpeech:
 
 	ld hl, OakText5
 	call PrintText
+	call NamePlayer
+	ld hl, OakText6
+	call PrintText
+	call RotateThreePalettesRight
+	call ClearTilemap
+
+	xor a
+	ld [wCurPartySpecies], a
+	ld a, RIVAL1
+	ld [wTrainerClass], a
+	call Intro_PrepTrainerPic
+
+	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
+	call GetSGBLayout
+	call Intro_RotatePalettesLeftFrontpic
+	
+	ld hl, OakText7
+	call PrintText
+	call NameRivalIntro
+	ld hl, OakText8
+	call PrintText
+	call RotateThreePalettesRight
+	call ClearTilemap
+
+	xor a
+	ld [wCurPartySpecies], a
+	ld a, POKEMON_PROF
+	ld [wTrainerClass], a
+	call Intro_PrepTrainerPic
+
+	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
+	call GetSGBLayout
+	call Intro_RotatePalettesLeftFrontpic
+	ld hl, OakText9
+	call PrintText	
+	farcall InitClock
 	call RotateThreePalettesRight
 	call ClearTilemap
 
@@ -568,11 +604,7 @@ OakSpeech:
 	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
 	call GetSGBLayout
 	call Intro_RotatePalettesLeftFrontpic
-
-	ld hl, OakText6
-	call PrintText
-	call NamePlayer
-	ld hl, OakText7
+	ld hl, OakText10
 	call PrintText
 	ret
 
@@ -583,7 +615,7 @@ OakText1:
 OakText2:
 	text_far _OakText2
 	text_asm
-	ld a, MARILL
+	ld a, SLOWKING
 	call PlayMonCry
 	call WaitSFX
 	ld hl, OakText3
@@ -607,6 +639,18 @@ OakText6:
 
 OakText7:
 	text_far _OakText7
+	text_end
+	
+OakText8:
+	text_far _OakText8
+	text_end
+	
+OakText9:
+	text_far _OakText9
+	text_end
+	
+OakText10:
+	text_far _OakText10
 	text_end
 
 NamePlayer:
@@ -647,8 +691,48 @@ NamePlayer:
 	ld de, PlayerNameArray
 	call InitName
 	ret
+	
+NameRivalIntro:
+	call MovePlayerPicRight
+	ld hl, RivalNameMenuHeader
+	call ShowPlayerNamingChoices
+	ld a, [wMenuCursorY]
+	dec a
+	jr z, .NewName
+	ld de, wRivalName
+	call StorePlayerName
+	farcall ApplyMonOrTrainerPals
+	call MovePlayerPicLeft
+	ret
+
+.NewName:
+	ld b, NAME_RIVAL
+	ld de, wRivalName
+	farcall NamingScreen
+
+	call RotateThreePalettesRight
+	call ClearTilemap
+
+	call LoadFontsExtra
+	call WaitBGMap
+
+	xor a
+	ld [wCurPartySpecies], a
+	ld a, RIVAL1
+	ld [wTrainerClass], a
+	call Intro_PrepTrainerPic
+
+	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
+	call GetSGBLayout
+	call RotateThreePalettesLeft
+
+	ld hl, wRivalName
+	ld de, RivalNameArray
+	call InitName
+	ret	
 
 INCLUDE "data/player_names.asm"
+INCLUDE "data/rival_names.asm"
 
 ShowPlayerNamingChoices:
 	call LoadMenuHeader
@@ -731,12 +815,17 @@ MovePlayerPic:
 	push bc
 	push hl
 	push de
+	push hl
+	dec hl
+	lb bc, 7, 7
+	call ClearBox
+	pop hl
+	
 	xor a
 	ldh [hBGMapMode], a
+	ldh [hBGMapThird], a
 	lb bc, 7, 7
 	predef PlaceGraphic
-	xor a
-	ldh [hBGMapThird], a
 	call WaitBGMap
 	call DelayFrame
 	pop de
