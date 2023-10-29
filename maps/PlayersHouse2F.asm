@@ -291,9 +291,8 @@ PlayersHousePCScriptText5:
 PlayersHouseConsoleScript_Text:
 	text "<PLAYER> played"
 	line "the Nintendo 64!"
-	cont "...Alright!"
-	cont "It's time to go"
-	cont "play outside!"
+	cont "<……>Alright!"
+	cont "It's time to go!"
 	done
 
 PlayersHouseDollScript_Text:

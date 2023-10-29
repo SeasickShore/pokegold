@@ -69,6 +69,7 @@ Tealburg_RivalScript:
 	ifequal 4, .Mommy
 .Next
 	writetext Tealburg_RivalScript_Text2
+	waitbutton
 	closetext
 	applymovement TEALBURG_RIVAL, Tealburg_RivalScript_Mov3
 	disappear TEALBURG_RIVAL
