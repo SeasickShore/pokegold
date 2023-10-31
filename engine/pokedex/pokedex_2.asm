@@ -164,19 +164,6 @@ DisplayDexEntry:
 	lb bc, 5, SCREEN_WIDTH - 2
 	hlcoord 1, 11
 	call ClearBox
-;	hlcoord 1, 10
-;	ld bc, SCREEN_WIDTH - 1
-;	ld a, $61 ; horizontal divider
-;	call ByteFill
-	; page number
-;	hlcoord 1, 9
-;	ld [hl], $55
-;	inc hl
-;	ld [hl], $55
-;	hlcoord 1, 10
-;	ld [hl], $56 ; P.
-;	inc hl
-;	ld [hl], $57 ; 1
 	pop de
 	inc de
 	pop af
@@ -194,19 +181,6 @@ DisplayDexEntry:
 	lb bc, 5, SCREEN_WIDTH - 2
 	hlcoord 1, 11
 	call ClearBox
-;	hlcoord 1, 10
-;	ld bc, SCREEN_WIDTH - 2
-;	ld a, $61
-;	call ByteFill
-	; page number
-;	hlcoord 1, 9
-;	ld [hl], $55
-;	inc hl
-;	ld [hl], $55
-;	hlcoord 1, 10
-;	ld [hl], $56 ; P.
-;	inc hl
-;	ld [hl], $58 ; 2
 	pop de
 	inc de
 	pop af
