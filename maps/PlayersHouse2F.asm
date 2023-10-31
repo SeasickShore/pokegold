@@ -18,7 +18,6 @@ PlayersHouse2FInitializeRoomCallback:
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_8
 	checkevent EVENT_INITIALIZED_EVENTS
 	iftrue .SkipInitialization
-	setflag ENGINE_POKEDEX
 	setflag ENGINE_POKEGEAR
 	jumpstd InitializeEventsScript
 	endcallback
@@ -38,7 +37,6 @@ PlayersHouseDollScript:
 PlayersHouse2F_KenScript:
 	faceplayer
 	opentext
-	givepoke MEWTWO, 100
 	checkevent EVENT_READ_OAKS_EMAIL
 	iftrue .AlreadyReadEmail
 	checkevent EVENT_TALKED_TO_KEN_ONCE
