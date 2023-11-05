@@ -30,7 +30,8 @@ NewBarkTown_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
-	warp_event  0,  0, ELMS_LAB, 1
+	warp_event 14, 15, ELMS_LAB, 1
+    warp_event 15, 15, ELMS_LAB, 2
 	warp_event  3,  8, PLAYERS_HOUSE_1F, 1
 	warp_event  0,  0, PLAYERS_NEIGHBORS_HOUSE, 1
 	warp_event  0,  0, ELMS_HOUSE, 1
@@ -130,6 +131,10 @@ Tealburg_RivalScript:
 	db "MOMMY@"	
 	
 Tealburg_BlueCoordScript1:
+    clearevent EVENT_POPULATE_LAB
+    clearevent EVENT_BLUE_LAB_WALK_UP
+    clearevent EVENT_OAK_IN_SILENT_LAB_FRONT
+    setmapscene ELMS_LAB, SCENE_SILENT_LAB_FRONT_EVENT
 	opentext
 	writetext Tealburg_BlueCoordScript_Text1
 	waitbutton
@@ -150,10 +155,14 @@ Tealburg_BlueCoordScript1:
 	applymovement PLAYER, Tealburg_BlueCoordScript_Mov3
 	special FadeOutPalettes
 	pause 15
-	warp ELMS_LAB, 4, 13
+	warp ELMS_LAB, 4, 15
 	end
 	
 Tealburg_BlueCoordScript2:
+    clearevent EVENT_POPULATE_LAB
+    clearevent EVENT_BLUE_LAB_WALK_UP
+    clearevent EVENT_OAK_IN_SILENT_LAB_FRONT
+    setmapscene ELMS_LAB, SCENE_SILENT_LAB_FRONT_EVENT
 	opentext
 	writetext Tealburg_BlueCoordScript_Text1
 	waitbutton
@@ -174,7 +183,7 @@ Tealburg_BlueCoordScript2:
 	applymovement PLAYER, Tealburg_BlueCoordScript_Mov3
 	special FadeOutPalettes
 	pause 15
-	warp ELMS_LAB, 4, 13
+	warp ELMS_LAB, 4, 15
 	end
 	
 TealburgSign:
@@ -253,15 +262,15 @@ Tealburg_RivalScript_Text1:
 	cont "Huh? You got one"
 	cont "too? Ugh! Boring!"
 	
-	para "<……>Hmph!"
-	line "Then, then<……>"
+	para "…Hmph!"
+	line "Then, then…"
 	cont "Got it!"
 	cont "What do you call"
 	cont "your mom?"
 	done
 	
 Tealburg_RivalScript_Text2:
-	text "<MOM><……>"
+	text "<MOM>…"
 	line "Lame! You really"
 	cont "call her something"
 	cont "so childish? Don't"
@@ -269,7 +278,7 @@ Tealburg_RivalScript_Text2:
 	cont "Oh, I feel re-"
 	cont "freshed already."
 	
-	para "Then<……> I'll be one"
+	para "Then… I'll be one"
 	line "step ahead and go"
 	cont "to PROF.OAK's place"
 	cont "at once!"
@@ -292,9 +301,9 @@ Tealburg_BlueCoordScript_Text2:
 	para "If you had your"
 	line "own #MON, you"
 	cont "could protect"
-	cont "yourself<……>"
+	cont "yourself…"
 	
-	para "Oh! Could you be<……>"
+	para "Oh! Could you be…"
 	line "Come with me for a"
 	cont "moment!"
 	done

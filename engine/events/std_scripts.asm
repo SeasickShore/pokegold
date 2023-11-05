@@ -437,6 +437,12 @@ BugContestResults_CopyContestantsToResults:
 
 InitializeEventsScript:
 	setevent EVENT_TEALBURG_BLUE
+    setevent EVENT_OAK_IN_SILENT_LAB_FRONT
+    setevent EVENT_OAK_IN_SILENT_LAB_BACK
+    setevent EVENT_RIVAL_IN_SILENT_LAB_BACK
+    setevent EVENT_BLUE_LAB_WALK_UP
+    setevent EVENT_BLUE_LAB_FRONT
+    setevent EVENT_POPULATE_LAB
 	setevent EVENT_EARLS_ACADEMY_EARL
 	setevent EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	setevent EVENT_GOLDENROD_CITY_ROCKET_TAKEOVER

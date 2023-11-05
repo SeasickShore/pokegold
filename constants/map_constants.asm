@@ -438,7 +438,7 @@ ENDM
 	map_const ROUTE_29,                                    15,  9 ;  3
 	map_const ROUTE_30,                                    10, 18 ;  1	
 	map_const NEW_BARK_TOWN,                               10, 11 ;  4
-	map_const ELMS_LAB,                                     5,  6 ;  5
+	map_const ELMS_LAB,                                     4,  8 ;  5
 	map_const PLAYERS_HOUSE_1F,                             5,  4 ;  6
 	map_const PLAYERS_HOUSE_2F,                             5,  4 ;  7
 	map_const PLAYERS_NEIGHBORS_HOUSE,                      4,  4 ;  8
