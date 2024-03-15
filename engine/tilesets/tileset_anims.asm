@@ -143,7 +143,9 @@ TilesetGymAnim:
 
 ; Water only ($14)
 TilesetPortAnim:
-	dw vTiles2 tile $14, AnimateWaterTile
+	dw vTiles2 tile $14, ReadTileToAnimBuffer
+	dw wTileAnimBuffer, ScrollTileRightLeft
+	dw vTiles2 tile $14, WriteTileFromAnimBuffer
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
@@ -151,10 +153,8 @@ TilesetPortAnim:
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
+
 
 TilesetHouseAnim:
 TilesetLabAnim:
