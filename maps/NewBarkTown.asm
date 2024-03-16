@@ -31,14 +31,14 @@ NewBarkTown_MapEvents:
 
 	def_warp_events
 	warp_event 14, 15, ELMS_LAB, 1
-    warp_event 15, 15, ELMS_LAB, 2
+	warp_event 15, 15, ELMS_LAB, 2
 	warp_event  3,  8, PLAYERS_HOUSE_1F, 1
 	warp_event  0,  0, PLAYERS_NEIGHBORS_HOUSE, 1
 	warp_event  0,  0, ELMS_HOUSE, 1
 
 	def_coord_events
-	coord_event  0, 12, SCENE_TEALBURG_BLUE, Tealburg_BlueCoordScript1
-	coord_event  0, 13, SCENE_TEALBURG_BLUE, Tealburg_BlueCoordScript2
+	coord_event  0, 11, SCENE_TEALBURG_BLUE, Tealburg_BlueCoordScript1
+	coord_event  0, 14, SCENE_TEALBURG_BLUE, Tealburg_BlueCoordScript2
 
 	def_bg_events	
 	bg_event 16,  9, BGEVENT_READ, TealburgSign

@@ -208,7 +208,8 @@ ENDM
 	map_const KURTS_HOUSE,                                  8,  4 ;  4
 	map_const AZALEA_GYM,                                   5,  8 ;  5
 	map_const ROUTE_33,                                    10,  9 ;  6
-	map_const AZALEA_TOWN,                                 20,  9 ;  7
+	map_const AZALEA_TOWN,                                 10,  9 ;  7
+	map_const ROUTE_32,                                    10, 27 ;  1
 	endgroup
 
 	newgroup LAKE_OF_RAGE                                         ;  9
@@ -221,7 +222,6 @@ ENDM
 	endgroup
 
 	newgroup VIOLET                                               ; 10
-	map_const ROUTE_32,                                    10, 45 ;  1
 	map_const ROUTE_35,                                    10, 18 ;  2
 	map_const ROUTE_36,                                    30,  9 ;  3
 	map_const ROUTE_37,                                    10,  9 ;  4
@@ -468,7 +468,7 @@ ENDM
 	endgroup
 
 	newgroup CHERRYGROVE                                          ; 26
-	map_const ROUTE_31,                                    20,  9 ;  2
+	map_const ROUTE_31,                                    15,  9 ;  2
 	map_const CHERRYGROVE_CITY,                            20, 18 ;  3
 	map_const CHERRYGROVE_MART,                             6,  4 ;  4
 	map_const CHERRYGROVE_POKECENTER_1F,                    5,  4 ;  5
