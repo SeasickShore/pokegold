@@ -1,5 +1,5 @@
-TIMESET_UP_ARROW   EQU $d7
-TIMESET_DOWN_ARROW EQU $d8
+DEF TIMESET_UP_ARROW   EQU $d7
+DEF TIMESET_DOWN_ARROW EQU $d8
 
 InitClock:
 ; Ask the player to set the time.
