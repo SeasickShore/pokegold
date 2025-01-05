@@ -590,7 +590,7 @@ OakSpeech:
 	call GetSGBLayout
 	call Intro_RotatePalettesLeftFrontpic
 	ld hl, OakText9
-	call PrintText	
+	call PrintText
 	farcall InitClock
 	call RotateThreePalettesRight
 	call ClearTilemap

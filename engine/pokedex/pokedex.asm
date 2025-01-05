@@ -213,13 +213,13 @@ Pokedex_InitMainScreen:
 	xor a
 	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
-	call ByteFill	
+	call ByteFill
 	call Pokedex_DrawMainScreenBG
 	farcall DrawPokedexListWindow	
 	ld a, 7
 	ld [wDexListingHeight], a
 	call Pokedex_PrintListing
-	call WaitBGMap	
+	call WaitBGMap
 	call Pokedex_ResetBGMapMode
 	ld a, -1
 	ld [wCurPartySpecies], a
@@ -960,6 +960,7 @@ Pokedex_ListingHandleDPadInput:
 	jr Pokedex_ListingPosStayedSame
 
 Pokedex_ListingMoveCursorUp:
+	call Pokedex_DrawIndicatorUp
 	ld hl, wDexListingCursor
 	ld a, [hl]
 	and a
@@ -975,6 +976,7 @@ Pokedex_ListingMoveCursorUp:
 	jr Pokedex_ListingPosChanged
 
 Pokedex_ListingMoveCursorDown:
+	call Pokedex_DrawIndicatorDown
 	ld hl, wDexListingCursor
 	ld a, [hl]
 	inc a
@@ -993,6 +995,7 @@ Pokedex_ListingMoveCursorDown:
 	jr Pokedex_ListingPosChanged
 
 Pokedex_ListingMoveUpOnePage:
+	call Pokedex_DrawIndicatorLeft
 	ld hl, wDexListingScrollOffset
 	ld a, [hl]
 	and a
@@ -1010,6 +1013,7 @@ Pokedex_ListingMoveUpOnePage:
 
 Pokedex_ListingMoveDownOnePage:
 ; When moving down a page, the return value always report a change in position.
+	call Pokedex_DrawIndicatorRight
 	ld hl, wDexListingScrollOffset
 	ld a, d
 	add a
@@ -1080,7 +1084,8 @@ Pokedex_DrawMainScreenBG:
 	call PrintNum
 	hlcoord 13, 9
 	ld de, String_SELECT_OPTION
-	call Pokedex_PlaceString	
+	call Pokedex_PlaceString
+	call Pokedex_DrawIndicators
 	ret
 
 String_SEEN:
@@ -2662,4 +2667,102 @@ VerticalDexMenu:
 
 .okay
 	and a
+	ret
+
+Pokedex_DrawIndicatorUp:
+	hlcoord 15, 2
+	ld [hl], $6a
+	hlcoord 16, 2
+	ld [hl], $6b
+	hlcoord 15, 3
+	ld [hl], $7a
+	hlcoord 16, 3
+	ld [hl], $7b
+	call Pokedex_WaitBGMap
+	jr Pokedex_DrawIndicators
+
+Pokedex_DrawIndicatorDown:
+	hlcoord 15, 6
+	ld [hl], $68
+	hlcoord 16, 6
+	ld [hl], $69
+	hlcoord 15, 7
+	ld [hl], $78
+	hlcoord 16, 7
+	ld [hl], $79
+	call Pokedex_WaitBGMap
+	jr Pokedex_DrawIndicators
+
+Pokedex_DrawIndicatorLeft:
+	hlcoord 13, 4
+	ld [hl], $3e
+	hlcoord 14, 4
+	ld [hl], $3f
+	hlcoord 13, 5
+	ld [hl], $4e
+	hlcoord 14, 5
+	ld [hl], $4f
+	call Pokedex_WaitBGMap
+	jr Pokedex_DrawIndicators
+
+Pokedex_DrawIndicatorRight:
+	hlcoord 17, 4
+	ld [hl], $6c
+	hlcoord 18, 4
+	ld [hl], $6d
+	hlcoord 17, 5
+	ld [hl], $7c
+	hlcoord 18, 5
+	ld [hl], $7d
+	call Pokedex_WaitBGMap
+
+Pokedex_DrawIndicators:
+	; UP
+	hlcoord 15, 2
+	ld [hl], $62
+	hlcoord 16, 2
+	ld [hl], $63
+	hlcoord 15, 3
+	ld [hl], $72
+	hlcoord 16, 3
+	ld [hl], $73
+
+	; DOWN
+	hlcoord 15, 6
+	ld [hl], $60
+	hlcoord 16, 6
+	ld [hl], $61
+	hlcoord 15, 7
+	ld [hl], $70
+	hlcoord 16, 7
+	ld [hl], $71
+
+	; LEFT
+	hlcoord 13, 4
+	ld [hl], $66
+	hlcoord 14, 4
+	ld [hl], $67
+	hlcoord 13, 5
+	ld [hl], $76
+	hlcoord 14, 5
+	ld [hl], $77
+
+	; RIGHT
+	hlcoord 17, 4
+	ld [hl], $64
+	hlcoord 18, 4
+	ld [hl], $65
+	hlcoord 17, 5
+	ld [hl], $74
+	hlcoord 18, 5
+	ld [hl], $75
+	ret
+
+Pokedex_WaitBGMap:
+; Tell VBlank to update BG Map
+	ld a, 1 ; BG Map 0 tiles
+	ldh [hBGMapMode], a
+; Wait for it to do its magic
+	ld c, 3
+	call DelayFrames
 	ret

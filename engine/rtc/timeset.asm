@@ -686,7 +686,7 @@ ClockArrowsBlinking:
 	ld [hl], " "
 	ret
 	
-ClockArrowsBlinkingTwice:	
+ClockArrowsBlinkingTwice:
 	ld hl, wDexArrowCursorBlinkCounter
 	ld a, [hl]
 	inc [hl]
